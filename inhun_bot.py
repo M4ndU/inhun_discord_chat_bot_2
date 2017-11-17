@@ -1,7 +1,7 @@
 import discord
 import asyncio
 import datetime
-from web3 import *
+from parser import *
 
 client = discord.Client()
 
@@ -90,4 +90,4 @@ async def on_message(message):
                 await client.send_message(message.channel, lunch)
                 await client.send_message(message.channel, dinner)
 
-client.run('Mzc0MDk0MTc1MDYwMDk5MDc1.DNdYdg.KIvtNwxsdRG9vMyteq4Uae8vQ-w')
+client.run('Your_Token_Here')
