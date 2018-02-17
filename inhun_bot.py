@@ -1,7 +1,7 @@
 import discord
 import asyncio
 import datetime
-from web3 import *
+from parser import *
 
 client = discord.Client()
 
