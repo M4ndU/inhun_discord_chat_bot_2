@@ -1,7 +1,10 @@
 import discord
 import asyncio
 import datetime
+import os
 from parser import *
+
+BOT_TOKEN = os.environ.get('BOT_TOKEN', None)
 
 client = discord.Client()
 
@@ -124,5 +127,5 @@ async def on_message(message):
                 await client.send_message(message.channel, embed=dinner_e)
 
 #client.run('your_token_here')
-client.run(process.env.BOT_TOKEN)
+client.run(BOT_TOKEN)
 #heroku
