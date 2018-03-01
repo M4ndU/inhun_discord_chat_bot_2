@@ -1,5 +1,4 @@
 aiohttp==2.3.1
-apturl==0.5.2
 async-timeout==2.0.0
 beautifulsoup4==4.6.0
 blinker==1.3
