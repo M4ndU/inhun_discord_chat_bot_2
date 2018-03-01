@@ -97,6 +97,11 @@ async def on_message(message):
             meal_date = '20' + meal_date[:2] + '.' + meal_date[2:4] + '.' + meal_date[4:6] # 2017.11.21
 
             s = meal_date.replace('.', ', ') # 2017, 11, 21
+            
+            #한자리수 달인 경우를 해결하기위함
+            if int(s[6:8]) < 10:
+                s = s.replace(s[6:8], s[7:8])
+            
             ss = "datetime.datetime(" + s + ").weekday()"
             try:
                 whatday = eval(ss)
