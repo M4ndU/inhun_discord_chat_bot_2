@@ -123,4 +123,6 @@ async def on_message(message):
                 dinner_e = discord.Embed(title="Dinner", description=dinner, color=0x00ff00)
                 await client.send_message(message.channel, embed=dinner_e)
 
-client.run('your_token_here')
+#client.run('your_token_here')
+client.run(process.env.BOT_TOKEN)
+#heroku
