@@ -12,7 +12,6 @@ Command_list.add_field(name="$a", value="도움말", inline=False)
 Command_list.add_field(name="$b", value="버전 정보", inline=False)
 Command_list.add_field(name="$c", value="안녕", inline=False)
 Command_list.add_field(name="$d", value="오늘 날짜", inline=False)
-Command_list.add_field(name="$e", value="버그 제보하기", inline=False)
 Command_list.add_field(name="$f", value="내일급식", inline=False)
 Command_list.add_field(name="$g", value="급식정보", inline=False)
 
@@ -50,7 +49,7 @@ async def on_message(message):
 
     elif message.content.startswith('$b'):
         embed = discord.Embed(title="Bot Version", description="updated", color=0x00ff00)
-        embed.add_field(name="Version", value="2.3.0", inline=False)
+        embed.add_field(name="Version", value="2.3.2", inline=False)
         await client.send_message(message.channel, embed=embed)
 
     elif message.content.startswith('$c'):
@@ -59,17 +58,6 @@ async def on_message(message):
 
     elif message.content.startswith('$d'):
         embed = discord.Embed(title="Local Time", description=local_date, color=0x00ff00)
-        await client.send_message(message.channel, embed=embed)
-
-    elif message.content.startswith('$e'):
-        embed = discord.Embed(title="Report!", description="관리자에게 메세지를 남길 수 있습니다.\n보내주세요:", color=0xcceeff)
-        await client.send_message(message.channel, embed=embed)
-        leave_msg = await client.wait_for_message(author=message.author)
-        print(local_date)
-        print(message.author)
-        print(str(leave_msg.content))
-        print('------')
-        embed = discord.Embed(title="Success", description="성공", color=0x00ff00)
         await client.send_message(message.channel, embed=embed)
 
     elif message.content.startswith('$f'):
