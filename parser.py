@@ -14,7 +14,7 @@ def get_html(url):
 def get_diet(code, ymd, weekday):
     schMmealScCode = code #int
     schYmd = ymd #str
-    if weekday == 6:
+    if weekday == 5 or weekday == 6:
         element = " "
     else:
         num = weekday + 1 #int 0월1화2수3목4금5토6일
