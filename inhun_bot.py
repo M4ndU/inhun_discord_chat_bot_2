@@ -1,5 +1,5 @@
 import discord , asyncio , datetime , sys , os
-from parser import *
+from web3 import *
 
 def main():
     client = discord.Client()
@@ -24,6 +24,26 @@ def main():
 
     plus_meal_notice = ""
 
+    async def my_background_task():
+        await client.wait_until_ready()
+        channel = discord.Object(id='channel_id_here')
+        while not client.is_closed:
+            await client.send_message(channel, "hi")
+            await asyncio.sleep(60*60*24) # 1일마다 메세지 전송
+
+    @client.event
+    async def on_member_join(member):
+        fmt = ' {1.name} 에 오신걸 환영합니다, {0.mention} 님'
+        channel = member.server.get_channel("channel_id_here")
+        await client.send_message(channel, fmt.format(member, member.server))
+        await client.send_message(member, "내용")
+
+    @client.event
+    async def on_member_remove(member):
+        channel = member.server.get_channel("channel_id_here")
+        fmt = '{0.mention} 님이 서버에서 나가셨습니다.'
+        await client.send_message(channel, fmt.format(member, member.server))
+
     @client.event
     async def on_ready():
         print('Logged in as')
@@ -40,7 +60,7 @@ def main():
 
         elif message.content.startswith('$b'):
             embed = discord.Embed(title="Bot Version", description="updated", color=0x00ff00)
-            embed.add_field(name="Version", value="2.3.5", inline=False)
+            embed.add_field(name="Version", value="2.3.6", inline=False)
             await client.send_message(message.channel, embed=embed)
 
         elif message.content.startswith('$d'):
@@ -120,6 +140,7 @@ def main():
                     dinner_e = discord.Embed(title="Dinner", description=dinner, color=0x00ff00)
                     await client.send_message(message.channel, embed=dinner_e)
 
+    client.loop.create_task(my_background_task())
     client.run('token')
 
     #대기 시간 초과로 봇이 종료되었을 때 자동으로 재실행을 위함
