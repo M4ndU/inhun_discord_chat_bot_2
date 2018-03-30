@@ -60,7 +60,7 @@ def main():
 
         elif message.content.startswith('$b'):
             embed = discord.Embed(title="Bot Version", description="updated", color=0x00ff00)
-            embed.add_field(name="Version", value="2.3.6", inline=False)
+            embed.add_field(name="Version", value="2.4.0", inline=False)
             await client.send_message(message.channel, embed=embed)
 
         elif message.content.startswith('$d'):
