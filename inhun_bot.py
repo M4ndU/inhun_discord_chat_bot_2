@@ -1,5 +1,5 @@
 import discord , asyncio , datetime , sys , os
-from web3 import *
+from parser import *
 
 def main():
     client = discord.Client()
